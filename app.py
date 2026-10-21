@@ -65,7 +65,8 @@ if prompt := st.chat_input("Typ een bericht aan je assistent..."):
             )
 
             
-            model = genai.GenerativeModel("gemini-3.8-flash", system_instruction=system_instruction)
+            model = genai.GenerativeModel("gemini-1.5-flash", system_instruction=system_instruction)
+
             response = model.generate_content(prompt)
             ai_response = response.text
 
