@@ -33,7 +33,7 @@ if prompt := st.chat_input("Typ een bericht aan je assistent..."):
         message_placeholder = st.empty()
         try:
             # We gebruiken het nieuwste, snelle en gratis model
-            model = genai.GenerativeModel("gemini-2.5-flash")
+            model = genai.GenerativeModel("gemini-3.8-flash")
             response = model.generate_content(prompt)
             ai_response = response.text
             message_placeholder.markdown(ai_response)
