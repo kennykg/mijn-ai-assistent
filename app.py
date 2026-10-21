@@ -56,12 +56,14 @@ if prompt := st.chat_input("Typ een bericht aan je assistent..."):
             # We vertellen de AI via de System Instruction exact hoe hij moet reageren bij een afspraak
             system_instruction = (
                 "Je bent een persoonlijke assistent die afspraken inplant. "
+                "HET IS NU HET JAAR 2026. Als de gebruiker een datum noemt zoals '26 oktober', bedoelt hij ALTIJD 26 oktober 2026. "
                 "Als de gebruiker een afspraak, herinnering of planning noemt met een datum en tijd, "
                 "moet je ALTIJD reageren door DIRECT te beginnen met de tekst: [AGENDA_ACTIE] "
-                "gevolgd door de details in JSON formaat op de volgende regel. Geef GEEN normale tekst, handleidingen of linkjes vooraf. "
-                "Zorg dat het JSON formaat er exact zo uitziet:\n"
-                "{\n\"titel\": \"Naam van de afspraak\",\n\"datum_tijd\": \"2026-10-25T11:00:00\",\n\"beschrijving\": \"\"\n}"
+                "gevolgd door de details in JSON formaat op de volgende regel. Geef GEEN normale tekst vooraf. "
+                "Zorg dat het JSON formaat er exact zo uitziet (let op dat het jaartal 2026 is):\n"
+                "{\n\"titel\": \"Naam van de afspraak\",\n\"datum_tijd\": \"2026-10-26T11:00:00\",\n\"beschrijving\": \"\"\n}"
             )
+
             
             model = genai.GenerativeModel("gemini-3.8-flash", system_instruction=system_instruction)
             response = model.generate_content(prompt)
